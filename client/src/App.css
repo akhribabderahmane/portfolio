@@ -1,0 +1,32 @@
+.hide-scrollbar {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, etc.) */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  /* custom.css */
+.text-clamp-3-half {
+    display: -webkit-box;
+    line-clamp: 3; /* Show 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+    height: calc(3 * 1em); /* Adjust based on line height */
+    line-height: 1.5; /* Adjust based on your needs */
+  }
+  
+  .text-clamp-3-half::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white; /* Adjust based on background color */
+    padding-left: 5px;
+  }
+
+
+
+  
+  

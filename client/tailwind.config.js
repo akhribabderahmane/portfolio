@@ -15,6 +15,10 @@ export default {
         emoji: ['Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
       },
       colors:{
+        "blue-bright":"#14b8a6",
+        "blue-bright-darker-1": "#119a8d",
+        "blue-bright-darker-2": "#0e7d73",
+        "blue-bright-darker-3": "#0b615a",
         background:{
           light:{
             100: "#f5f5f5",
@@ -48,6 +52,8 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
 

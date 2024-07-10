@@ -56,7 +56,7 @@ const Navbar = () => {
     </div>
     {isOpen && (
       <motion.div layout transition={spring} className='w-full mt-4'>
-        <Menu />
+        <Menu isOpen={isOpen} />
       </motion.div>
     )}
   </div>
