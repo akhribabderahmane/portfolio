@@ -4,7 +4,7 @@ import { IoIosInformationCircle } from "react-icons/io";
 const TextInput = ({ name, label, type, placeholder, control }) => {
   const { field, fieldState } = useController({ control, name });
   return (
-    <div className="">
+    <div className=" col-span-2 md:col-auto">
       <input
         type={type}
         label={label}

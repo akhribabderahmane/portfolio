@@ -25,11 +25,11 @@ const MessageForm = () => {
     reset();
   }
   return (
-    <div className=" py-8">
+    <div className=" py-8 space-y-6">
       <h3 className=" text-2xl font-medium ">or send a message</h3>
       {/* form */}
       <div>
-        <form action="POST" className="grid grid-cols-2 gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <form action="POST" className="grid  grid-cols-2 gap-4" onSubmit={handleSubmit(onSubmit)}>
           <TextInput
             name="name"
             label="name"

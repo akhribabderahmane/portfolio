@@ -18,7 +18,7 @@ function App() {
   const isLaptop=useIsLaptop();
   const selectedRoute=useSelector(state=>state.generale.selectedMenuItem)
   return (
-    <main className={` max-w-screen  bg-background-light-100 dark:bg-background-light-950 ${isLaptop?"flex flex-row h-screen":""}`}>
+    <main className={` max-w-screen   bg-background-light-100 dark:bg-background-light-950 ${isLaptop?"flex flex-row h-screen":""}`}>
       {!isLaptop ? <Navbar /> : <Sidebar />}
       <AnimatePresence mode="wait">
       <div 
