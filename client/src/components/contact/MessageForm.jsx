@@ -4,6 +4,7 @@ import TextInput from "./TextInput";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DevTool } from "@hookform/devtools";
+import emailjs from 'emailjs-com';
 
 const MessageForm = () => {
   const schema = yup.object({
@@ -20,10 +21,15 @@ const MessageForm = () => {
     resolver: yupResolver(schema),
     mode:"onTouched",
   });
-  const onSubmit=(data)=>{
-    console.log(data);
-    reset();
-  }
+  const onSubmit = (data) => {
+    emailjs.send('service_bkposu4', 'template_cvneq7g', data, '5cUh2upw4bCZwofyd')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        reset();
+      }, (error) => {
+        console.log('FAILED...', error);
+      })
+}
   return (
     <div className=" py-8 space-y-6">
       <h3 className=" text-2xl font-medium ">or send a message</h3>

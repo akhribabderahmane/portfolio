@@ -2,6 +2,7 @@ import React from "react";
 import { LuExternalLink } from "react-icons/lu";
 import { BsGithub } from "react-icons/bs";
 import { motion } from "framer-motion";
+import { redirectToLink } from "../../utils/helper";
 
 const ProjectItem = ({ project }) => {
   return (
@@ -9,14 +10,14 @@ const ProjectItem = ({ project }) => {
       <div className=" max-h-1/2 relative">
          <div className="absolute opacity-0 group-hover:opacity-100 w-full h-full bg-background-dark-950 bg-opacity-90 rounded-t-xl transition-all duration-300">
           <div className=" flex flex-row justify-center gap-12 items-center h-full">
-          <button className=" flex flex-row-reverse items-center   gap-2 hover:gap-1 hover:pr-1 transition-all duration-300">
+          <button onClick={()=>redirectToLink(project.demo)} className=" flex flex-row-reverse items-center   gap-2 hover:gap-1 hover:pr-1 transition-all duration-300">
             <p className=" text-xl text-blue-bright font-medium  ">Live Demo</p>
              <LuExternalLink className=" text-neutral-200 pb-1" size={30} />
           </button>
-          <button className=" flex flex-row-reverse items-center gap-2 hover:gap-1 hover:pr-1 transition-all duration-300 ">
+         {!project.private && <button onClick={()=>redirectToLink(project.sourceCode)} className=" flex flex-row-reverse items-center gap-2 hover:gap-1 hover:pr-1 transition-all duration-300 ">
             <p className=" text-xl text-blue-bright font-medium  ">Source Code</p>
             <BsGithub  className=" text-neutral-200 pb-1" size={30} />
-          </button>
+          </button>}
           </div>
          </div>
         <img src={project.image} alt={project.name} className="rounded-t-xl object-cover" />

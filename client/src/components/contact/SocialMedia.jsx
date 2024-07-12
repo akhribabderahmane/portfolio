@@ -1,6 +1,7 @@
 import React from "react";
 import socialMedia from "../../constant/socialMedia";
 import useIsLaptop from "../../hooks/useIsMobile"
+import { redirectToLink } from "../../utils/helper";
 const SocialMedia = () => {
   const isLaptop=useIsLaptop();
   return (
@@ -9,7 +10,7 @@ const SocialMedia = () => {
     <div className={` flex ${isLaptop?"flex-row gap-4":'flex-col gap-4'} w-full items-center text-xl font-medium text-text-dark`}>
 
       {socialMedia.map((item,index) => {
-        return <button key={index} className={` rounded-lg flex flex-row justify-center items-center gap-3 px-2 py-2 hover:scale-105 transition duration-500 flex-1 ${item.bgColor} ${isLaptop?"":"w-full"}`}>
+        return <button onClick={()=>redirectToLink(item.link)} key={index} className={` rounded-lg flex flex-row justify-center items-center gap-3 px-2 py-2 hover:scale-105 transition duration-500 flex-1 ${item.bgColor} ${isLaptop?"":"w-full"}`}>
                {item.icon}
                {item.name}
         </button>;
