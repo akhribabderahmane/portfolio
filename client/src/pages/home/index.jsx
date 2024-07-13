@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const selectedRoute=useSelector(state=>state.generale.selectedMenuItem)
+  const selectedRoute = useSelector((state) => state.generale.selectedMenuItem);
   const waveAnimation = {
     rotate: [0, 20, -20, 20, -20, 0],
     transition: {
@@ -51,11 +51,11 @@ const Home = () => {
         </div>
         <div className="description dark:text-background-light-100 text-xl tracking-wide leading-8">
           <p>
-            Seasoned Software Engineer especially in Frontend side, with a
-            passion for creating pixel-perfect web experiences. I work with
-            JavaScript and specialize in all-things web. I thrive on
-            collaborating with teams to deliver efficient, scalable, and
-            visually appealing web applications.
+            I am a third-year computer science student at ESI ex-INI Algiers,
+            passionate about web development and AI. With a focus on creating
+            robust, user-friendly web applications, I strive for excellence in
+            every project. My journey in technology is driven by a commitment to
+            lifelong learning, constantly expanding my skills and knowledge
           </p>
         </div>
       </div>

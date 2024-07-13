@@ -96,7 +96,7 @@ export default WakatimeStats;
 
 const StatBox = ({ title, score }) => {
   return (
-    <div className=" text-lg flex flex-col justify-center gap-1 py-1 px-4 bg-neutral-100 shadow-lg border-2 dark:border-none rounded-xl">
+    <div className=" text-lg flex flex-col justify-center gap-1 py-1 px-4 bg-neutral-100 shadow-lg border-2  rounded-xl">
       <p className=" text-blue-bright ">{title}</p>
       <p className=" text-xl text-neutral-500">{score}</p>
     </div>
