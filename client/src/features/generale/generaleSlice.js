@@ -9,7 +9,8 @@ const initialState = {
         bestDayCount:0,
         averageCount:0,
     },
-    wakaTimeStats:null
+    wakaTimeStats:null,
+    aboutElementSelected:"About me",
   }
 
 
@@ -28,8 +29,11 @@ export const generaleSlice=createSlice({
         },
         setWakaTimeStats:(state,action)=>{
             state.wakaTimeStats=action.payload;
+        },
+        setAboutElementSelected:(state,action)=>{
+            state.aboutElementSelected=action.payload;
         }
     }
 });
- export const {setSelectedMenuItem,setGithubData,setGithubStats,setWakaTimeStats}=generaleSlice.actions;
+ export const {setSelectedMenuItem,setGithubData,setGithubStats,setWakaTimeStats,setAboutElementSelected}=generaleSlice.actions;
  export default generaleSlice.reducer;

@@ -45,7 +45,7 @@ const WakatimeStats = () => {
   };
 
   return (
-    <div>
+    <div className=" py-8">
       <div className="space-y-2">
         <div className=" flex flex-row gap-4 items-center">
           <SiWakatime size={30} />

@@ -19,11 +19,13 @@ const Dashboard = () => {
           description="This is my personal dashboard, displaying my recent performance"
         />
       </div>
+      <div className=" divide-y-[1px] divide-background-light-400 dark:divide-background-light-800">
       <div>
         <Contributions />
       </div>
       <div>
         <WakatimeStats />
+      </div>
       </div>
     </motion.div>
   );
