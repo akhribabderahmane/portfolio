@@ -8,7 +8,8 @@ const initialState = {
         countThisWeek:0,
         bestDayCount:0,
         averageCount:0,
-    }
+    },
+    wakaTimeStats:null
   }
 
 
@@ -24,8 +25,11 @@ export const generaleSlice=createSlice({
         },
         setGithubStats:(state,action)=>{
              state.githubStats=action.payload;
+        },
+        setWakaTimeStats:(state,action)=>{
+            state.wakaTimeStats=action.payload;
         }
     }
 });
- export const {setSelectedMenuItem,setGithubData,setGithubStats}=generaleSlice.actions;
+ export const {setSelectedMenuItem,setGithubData,setGithubStats,setWakaTimeStats}=generaleSlice.actions;
  export default generaleSlice.reducer;

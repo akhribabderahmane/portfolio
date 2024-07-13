@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader";
 import Contributions from "../../components/dashboard/Contributions";
+import WakatimeStats from "../../components/dashboard/WakatimeStats";
 
 const Dashboard = () => {
   return (
@@ -20,6 +21,9 @@ const Dashboard = () => {
       </div>
       <div>
         <Contributions />
+      </div>
+      <div>
+        <WakatimeStats />
       </div>
     </motion.div>
   );

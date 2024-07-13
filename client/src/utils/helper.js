@@ -9,5 +9,10 @@ const redirectToLink = (link) => {
     window.open(link, "_blank");
   }
 };
+const formatSeconds = (seconds) => {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return `${hours} hrs ${minutes} mins`;
+};
 
-export { formatDate, redirectToLink };
+export { formatDate, redirectToLink,formatSeconds };
