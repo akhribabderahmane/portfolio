@@ -2,6 +2,7 @@ import React from "react";
 import { BsGithub } from "react-icons/bs";
 import { format, subDays } from "date-fns";
 import GitHubContributionsCalendar from "./Calendar";
+import GithubOverview from "./GithubOverview";
 
 // Generate random data for contributions
 const generateData = (numDays = 365) => {
@@ -26,6 +27,9 @@ const Contributions = () => {
         <p className=" text-neutral-500 text-lg font-medium">
           my contribution from the last year on github
         </p>
+      </div>
+      <div>
+        <GithubOverview />
       </div>
       <div>
         <GitHubContributionsCalendar />

@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setGithubData,
+  setGithubStats,
+} from "../../features/generale/generaleSlice";
 
 const GitHubContributionsCalendar = () => {
   const isDarkMode = useSelector((state) => state.theme.value);
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  //   const [data, setData] = useState([]);
+  const data = useSelector((state) => state.generale.githubData);
 
   useEffect(() => {
     const fetchContributions = async () => {
-const token = "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"; // Replace with your GitHub token     
- const query = `{
+      const token =
+        "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"; // Replace with your GitHub token
+      const query = `{
         user(login: "akhribabderahmane") {
           contributionsCollection {
             contributionCalendar {
@@ -35,14 +42,39 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
       });
 
       const result = await response.json();
-      const contributions = result.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
-        (week) =>
-          week.contributionDays.map((day) => ({
-            date: new Date(day.date),
-            count: day.contributionCount,
-          }))
+        const contributions = result.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
+            (week) =>
+                week.contributionDays.map((day) => ({
+                    date: new Date(day.date),
+                    count: day.contributionCount,
+                }))
+        );
+      dispatch(setGithubData(contributions));
+      const totalContributions = contributions.reduce(
+        (sum, d) => sum + d.count,
+        0
       );
-      setData(contributions);
+      const averagePerDay = (totalContributions / contributions.length).toFixed(
+        2
+      );
+      const currentWeekStart = new Date();
+      currentWeekStart.setDate(
+        currentWeekStart.getDate() - currentWeekStart.getDay()
+      );
+      const totalThisWeek = contributions
+        .filter((d) => d.date >= currentWeekStart)
+        .reduce((sum, d) => sum + d.count, 0);
+        const bestDay = contributions.reduce((prev, current) =>
+            prev.count > current.count ? prev : current
+        ).count;
+      dispatch(
+        setGithubStats({
+          totalContributions: totalContributions,
+          countThisWeek: totalThisWeek,
+          bestDayCount: bestDay,
+          averageCount: averagePerDay,
+        })
+      );
     };
 
     fetchContributions();
@@ -61,7 +93,9 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
       const endDate = data[data.length - 1].date;
 
       const adjustedStartDate = new Date(startDate);
-      adjustedStartDate.setDate(adjustedStartDate.getDate() - adjustedStartDate.getDay());
+      adjustedStartDate.setDate(
+        adjustedStartDate.getDate() - adjustedStartDate.getDay()
+      );
 
       const svg = d3
         .create("svg")
@@ -70,7 +104,9 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
         .attr("viewBox", `0 0 ${width} ${height + cellSize}`)
         .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;");
 
-      const color = d3.scaleSequential(d3.interpolateGreens).domain([0, d3.max(data, (d) => d.count) + 5]);
+      const color = d3
+        .scaleSequential(d3.interpolateGreens)
+        .domain([0, d3.max(data, (d) => d.count) + 5]);
 
       let weekStartDate = new Date(adjustedStartDate);
       let weekIndex = 0;
@@ -90,12 +126,26 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
               .attr("height", cellSize - 1)
               .attr("x", weekIndex * (cellSize + gap))
               .attr("y", d.date.getDay() * (cellSize + gap) + cellSize)
-              .attr("fill", d.count === 0 ? (isDarkMode ? "#2C2C2C" : "#d0d0d0") : color(d.count + 4))
+              .attr(
+                "fill",
+                d.count === 0
+                  ? isDarkMode
+                    ? "#2C2C2C"
+                    : "#d0d0d0"
+                  : color(d.count + 4)
+              )
               .attr("rx", 5)
               .attr("ry", 5)
-              .attr("class", "transition-colors duration-300 hover:opacity-75 cursor-pointer")
+              .attr(
+                "class",
+                "transition-colors duration-300 hover:opacity-75 cursor-pointer"
+              )
               .append("title")
-              .text(`Date: ${d.date.toLocaleDateString()}\nContributions: ${d.count}`);
+              .text(
+                `Date: ${d.date.toLocaleDateString()}\nContributions: ${
+                  d.count
+                }`
+              );
           }
         });
 
@@ -106,7 +156,10 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
       const months = d3.timeMonths(startDate, endDate);
       months.forEach((month) => {
         const monthPosition =
-          Math.floor((d3.timeMonday.ceil(month) - adjustedStartDate) / (7 * 24 * 60 * 60 * 1000)) *
+          Math.floor(
+            (d3.timeMonday.ceil(month) - adjustedStartDate) /
+              (7 * 24 * 60 * 60 * 1000)
+          ) *
             (cellSize + gap) -
           gap;
 
@@ -115,7 +168,10 @@ const token = "github_pat_11A3V4NJQ0GEW44puvg7f1_BehjmyAEMpIX5X8PeEBXWMUMwhZwZZf
           .attr("x", monthPosition)
           .attr("y", cellSize / 2)
           .attr("dy", "-0.3em")
-          .attr("class", "text-lg font-semibold text-text-light dark:text-text-dark text-white")
+          .attr(
+            "class",
+            "text-lg font-semibold text-text-light dark:text-text-dark text-white"
+          )
           .text(d3.timeFormat("%B")(month))
           .attr("fill", isDarkMode ? "#ccc" : "#000");
       });

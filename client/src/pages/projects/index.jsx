@@ -12,7 +12,7 @@ const Projects = () => {
     className=' text-text-light dark:text-text-dark py-10 pt-14 flex flex-col px-8'
     >
        <PageHeader title={"Projects"} description={"Several projects that I have worked on ."} />
-       <div className=' grid grid-cols-2 gap-8 py-8'>
+       <div className=' grid grid-cols-1 md:grid-cols-2 gap-8 py-8'>
         {projects.map((project,index)=><ProjectItem project={project} key={index} />)}
        </div>
     </motion.div>
