@@ -10,7 +10,7 @@ const Stack = () => {
       {/* Right Gradient Shadow */}
       <div className=" dark:absolute  right-0 top-0 h-full w-40 bg-gradient-to-l  from-background-light-950  pointer-events-none z-30"></div>
       {stacks.map((stack,index) => (
-        <ToolRow stack={stack} key={index} />
+        <ToolRow stack={stack} key={index} direction={(index%2==0)?'rtl':'ltr'} />
       ))}
     </div>
   );

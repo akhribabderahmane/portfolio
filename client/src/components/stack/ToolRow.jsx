@@ -2,19 +2,16 @@ import React,{useRef} from 'react'
 import Tool from './Tool'
 import {
   motion,
-  useScroll,
-  useSpring,
   useTransform,
   useMotionValue,
-  useVelocity,
   useAnimationFrame
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
 
-const ToolRow = ({stack,baseVelocity=4}) => {
+const ToolRow = ({stack,baseVelocity=4,direction='ltr'}) => {
   const baseX = useMotionValue(0);
-  const directionFactor = useRef(1);
+  const directionFactor = useRef(direction==='ltr'?1:-1);
 
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta /1000);
