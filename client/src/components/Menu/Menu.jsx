@@ -40,8 +40,9 @@ const Menu = () => {
                 key={index}
                 isSelected={selectedMenuItem === item.title}
                 title={item.title}
+                link={item.href}
               >
-                <Link to={item.href}>
+                {/* <Link to={item.href}> */}
                   <div className=" flex flex-row justify-between items-center">
                     <div className=" flex flex-row items-center gap-4  ">
                       {item.icon}
@@ -53,7 +54,7 @@ const Menu = () => {
                       <FaArrowRight className=" scale-110 text-background-light-600 dark:text-background-light-400 dark:group-hover:text-background-light-300 group-hover:text-background-light-800 transition duration-500" />
                     )}
                   </div>
-                </Link>
+                {/* </Link> */}
               </MenuBtn>
             );
           })}

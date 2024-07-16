@@ -4,8 +4,8 @@ import PageHeader from '../../components/PageHeader'
 import SocialMedia from '../../components/contact/SocialMedia'
 import BookCall from '../../components/contact/BookCall'
 import MessageForm from '../../components/contact/MessageForm'
-
 const Contact = () => {
+  scrollTo(0,0)
   return (
     <motion.div  initial={{ y: 200, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}

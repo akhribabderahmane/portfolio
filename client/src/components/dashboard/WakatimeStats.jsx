@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SiWakatime } from "react-icons/si";
 import { useSelector, useDispatch } from "react-redux";
-import { formatDate } from "../../utils/helper";
+import { formatDate, getLastUpdate } from "../../utils/helper";
 import axios from "axios";
 import { setAllTimeStats, setLastWeekStats } from "../../features/wakatime/wakatimeSlice";
 
@@ -52,9 +52,14 @@ const WakatimeStats = () => {
           <SiWakatime size={30} />
           <h3 className=" text-2xl font-medium ">Weekly Statistics</h3>
         </div>
+        <div className=" flex flex-row md:flex-row md:justify-between gap-4">
         <p className=" text-neutral-500 text-lg font-medium">
           My WakaTime last 7 days stats.
         </p>
+        <p>
+          {getLastUpdate(allTimeStats?.modified_at || 'N/A')}
+        </p>
+        </div>
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 py-4">
         <StatBox

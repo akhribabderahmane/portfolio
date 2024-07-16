@@ -1,3 +1,4 @@
+import {formatDistanceToNow } from 'date-fns'
 const formatDate = (date) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   return new Intl.DateTimeFormat("en-US", options).format(date);
@@ -15,4 +16,10 @@ const formatSeconds = (seconds) => {
   return `${hours} hrs ${minutes} mins`;
 };
 
-export { formatDate, redirectToLink,formatSeconds };
+const getLastUpdate = (modifiedAt) => {
+  const lastUpdate = new Date(modifiedAt);
+  return `Last update: ${formatDistanceToNow(lastUpdate, { addSuffix: true })}`;
+};
+
+
+export { formatDate, redirectToLink,formatSeconds,getLastUpdate };
