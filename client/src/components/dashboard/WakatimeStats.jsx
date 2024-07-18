@@ -92,14 +92,14 @@ const WakatimeStats = () => {
       <div className=" flex flex-col md:flex-row gap-4 w-full">
         <CategorizedBox
           title={"Languages"}
-          color1={"blue-bright-darker-1"}
-          color2={"red-600"}
+          color1={"#119a8d"}
+          color2={"#dc2626"}
           statsArray={lastWeekStats?.languages || []}
         />
         <CategorizedBox
           title={"Categories"}
-          color2={"orange-600"}
-          color1={"sky-700"}
+          color1={"#0891b2"}
+          color2={"#a21caf"}
           statsArray={lastWeekStats?.categories || []}
         />
       </div>
@@ -121,7 +121,7 @@ const StatBox = ({ title, score }) => {
 const CategorizedBox = ({ title, color1, color2, statsArray = [] }) => {
   return (
     <div
-      className={`flex-1 rounded-3xl   p-1 bg-gradient-to-r   from-${color1} to-${color2} my-6`}
+      className={`flex-1 rounded-3xl   p-1   my-6`} style={{ backgroundImage: `linear-gradient(to right, ${color1}, ${color2})` }}
     >
       <div className=" bg-background-light-100 dark:bg-background-light-950 px-4 py-6 rounded-[calc(1.5rem-1px)] relative h-full ">
         <p className=" absolute text-2xl  left-6 -top-[22px] px-4  bg-background-light-100 dark:bg-background-light-950">
@@ -151,8 +151,8 @@ const ProgressBar = ({ text, progress, color1, color2 }) => {
       <p className=" text-lg font-semibold w-24">{text}</p>
       <div className=" flex-1 relative z-20  bg-background-light-400 dark:bg-background-light-700 h-3 rounded-full">
         <div
-          className={`absolute z-30 -top-6  h-full bg-gradient-to-r rounded-full   from-${color1} to-${color2} my-6 `}
-          style={{ width: `${progress}%` }}
+          className={`absolute z-30 -top-6  h-full  rounded-full   my-6 `}
+          style={{ width: `${progress}%`,backgroundImage: `linear-gradient(to right, ${color1}, ${color2})` }}
         ></div>
       </div>
       <p className=" text-lg font-medium w-12">{progress + "%"}</p>

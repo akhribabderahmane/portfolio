@@ -21,13 +21,13 @@ function App() {
 
   return (
     <main
-      className={` max-w-screen   bg-background-light-100 dark:bg-background-light-950 ${
+      className={`  max-w-screen max-w-[90rem] mx-auto overflow-scroll scrollbar-hidden   bg-background-light-100 dark:bg-background-light-950 ${
         isLaptop ? "flex flex-row h-screen" : ""
       }`}
     >
       {!isLaptop ? <Navbar /> : <Sidebar />}
       <AnimatePresence mode="wait">
-        <div className=" flex-1 overflow-x-auto overflow-y-scroll">
+        <div className=" flex-1 overflow-x-auto overflow-y-scroll overflow-scroll scrollbar-hidden">
         <Routes location={location} key={location.key}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />

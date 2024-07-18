@@ -13,7 +13,7 @@ const Sidebar = () => {
     const isDarkMode=useSelector(state=>state.theme.value);
     const dispatch=useDispatch();
   return (
-    <div className="min-w-[300px] py-6 px-4 max-h-screen">
+    <div className="min-w-[300px] py-6 px-4 max-h-screen ">
       <div className=" space-y-2">
         <img
           src="./images/profile-pic.jpg"
