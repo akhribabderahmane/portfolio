@@ -15,8 +15,8 @@ const Dashboard = () => {
     >
       <div>
         <PageHeader
-          title="Dashboard"
-          description="This is my personal dashboard, displaying my recent performance"
+          title="GuestBook"
+          description="this is a guestBook ,leave a message for me"
         />
       </div>
       <div className=" divide-y-[1px] divide-background-light-400 dark:divide-background-light-800">

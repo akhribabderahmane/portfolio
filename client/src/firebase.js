@@ -1,26 +1,31 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, GithubAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getDatabase} from "firebase/database";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCgUTJoM2nWZBbJtRtI4NJX_kN_n0bNPwk",
-  authDomain: "guestbook-24567.firebaseapp.com",
-  projectId: "guestbook-24567",
-  storageBucket: "guestbook-24567.appspot.com",
-  messagingSenderId: "283331661015",
-  appId: "1:283331661015:web:dc2a3ed8eb0f4b089ef492",
-  measurementId: "G-LN4RNJ64ZD"
+  apiKey: "AIzaSyAdalC1EdZWY1WWQZbhONM2IeDe2H7VaSo",
+  authDomain: "portfolio-4826f.firebaseapp.com",
+  databaseURL: "https://portfolio-4826f-default-rtdb.firebaseio.com/",
+  projectId: "portfolio-4826f",
+  storageBucket: "portfolio-4826f.appspot.com",
+  messagingSenderId: "735326680531",
+  appId: "1:735326680531:web:a1a821404c2539ff7d2b26",
+  measurementId: "G-RTE0VTG3CQ"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
-export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
-export const signInWithGithub = () => signInWithPopup(auth, githubProvider);
-export const logout = () => signOut(auth);
+const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+const signInWithGithub = () => signInWithPopup(auth, githubProvider);
+const logout = () => signOut(auth);
+
+export { auth, db, signInWithGoogle, signInWithGithub, logout };

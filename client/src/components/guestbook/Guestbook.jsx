@@ -1,8 +1,9 @@
 // src/components/Guestbook.jsx
 import React, { useState, useEffect } from "react";
 import { auth, db, signInWithGoogle, signInWithGithub, logout } from "../../firebase";
-import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { ref, onValue, push, serverTimestamp } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
+import SignIn from "./SignIn";
 
 const Guestbook = () => {
   const [user, setUser] = useState(null);
@@ -10,13 +11,18 @@ const Guestbook = () => {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
+    // Listen for authentication state changes
     const unsubscribeAuth = onAuthStateChanged(auth, setUser);
 
-    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-    const unsubscribeMessages = onSnapshot(q, (snapshot) => {
-      setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    // Listen for real-time updates to the "messages" collection
+    const messagesRef = ref(db, "messages");
+    const unsubscribeMessages = onValue(messagesRef, (snapshot) => {
+      const data = snapshot.val();
+      const messagesArray = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
+      setMessages(messagesArray.reverse()); // Reverse to show newest messages first
     });
 
+    // Cleanup listeners on component unmount
     return () => {
       unsubscribeAuth();
       unsubscribeMessages();
@@ -25,7 +31,8 @@ const Guestbook = () => {
 
   const handleMessageSend = async () => {
     if (newMessage.trim()) {
-      await addDoc(collection(db, "messages"), {
+      const messagesRef = ref(db, "messages");
+      await push(messagesRef, {
         text: newMessage,
         author: user.displayName,
         createdAt: serverTimestamp(),
@@ -67,52 +74,7 @@ const Guestbook = () => {
 export default Guestbook;
 
 
-// // src/components/Guestbook.jsx
-// import React, { useState, useEffect } from "react";
-// import { auth, db, signInWithGoogle, signInWithGithub, logout } from "../../firebase";
-// import { collection, addDoc, query, orderBy, onSnapshot } from "firebase/firestore";
-// import { onAuthStateChanged } from "firebase/auth";
-// import SignIn from "./SignIn";
-
-// const Guestbook = () => {
-//   const [user, setUser] = useState(null);
-//   const [messages, setMessages] = useState([]);
-//   const [newMessage, setNewMessage] = useState("");
-
-//   useEffect(() => {
-//     const unsubscribeAuth = onAuthStateChanged(auth, setUser);
-//     const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
-//     const unsubscribeMessages = onSnapshot(q, (snapshot) => {
-//       setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-//     });
-
-//     return () => {
-//       unsubscribeAuth();
-//       unsubscribeMessages();
-//     };
-//   }, []);
-
-//   const handleMessageSend = async () => {
-//     if (newMessage.trim()) {
-//       await addDoc(collection(db, "messages"), {
-//         text: newMessage,
-//         author: user.displayName,
-//         createdAt: new Date(),
-//       });
-//       setNewMessage("");
-//     }
-//   };
-
-//   return (
-//     <div>
-//        <SignIn />
-//     </div>
-//   );
-// };
-
-// export default Guestbook;
-
-    {/* {user ? (
+    /* {user ? (
         <div>
           <button onClick={logout}>Logout</button>
           <input
@@ -135,4 +97,4 @@ export default Guestbook;
           <button onClick={signInWithGoogle}>Sign in with Google</button>
           <button onClick={signInWithGithub}>Sign in with GitHub</button>
         </div>
-      )} */}
+      )} */

@@ -9,7 +9,7 @@ const SignIn = () => {
         <p>sign In ,dont worry your data is in safe hands</p>
       </div>
       <div className=" flex flex-row gap-4">
-        <button onClick={signInWithGoogle} className=" flex flex-row gap-2 items-center justify-center px-3 py-3 bg-neutral-50 shadow-sm eounded-md text-lg font-normal rounded-md">
+        <button onClick={signInWithGoogle} className=" flex flex-row gap-2 items-center justify-center px-3 py-3 bg-neutral-50 text-neutral-900 shadow-sm eounded-md text-lg font-normal rounded-md">
           <FcGoogle size={30} />
           <p>Sign In with Google</p>
         </button>
