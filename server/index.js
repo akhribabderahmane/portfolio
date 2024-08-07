@@ -5,13 +5,13 @@ import 'dotenv/config';
 
 const app = express();
 const port = 3000;
-const wakatimeApiKey =process.env.WAKATIME_API_KEY; // Replace with your WakaTime API key
+const wakatimekey =process.env.WAKATIME_API_KEY; // Replace with your WakaTime API key
 
 app.use(cors());
 
 app.get('/api/wakatime/stats', async (req, res) => {
   try {
-    const response = await axios.get(`https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${wakatimeApiKey}`);
+    const response = await axios.get(`https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${wakatimekey}`);
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -20,7 +20,7 @@ app.get('/api/wakatime/stats', async (req, res) => {
 
 app.get('/api/wakastats/alltime', async (req, res) => {
     try {
-        const response = await axios.get(`https://wakatime.com/api/v1/users/current/stats/all_time?api_key=${wakatimeApiKey}`);
+        const response = await axios.get(`https://wakatime.com/api/v1/users/current/stats/all_time?api_key=${wakatimekey}`);
         res.json(response.data);
       } catch (error) {
         res.status(500).json({ error: error.message });
