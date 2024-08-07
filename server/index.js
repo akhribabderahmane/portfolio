@@ -8,6 +8,9 @@ const port = 3000;
 const wakatimekey =process.env.WAKATIME_API_KEY; // Replace with your WakaTime API key
 
 app.use(cors());
+app.get('/',async (req,res)=>{
+  console.log("hello world")
+} )
 
 app.get('/api/wakatime/stats', async (req, res) => {
   try {
