@@ -6,14 +6,14 @@ import { getDatabase} from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAdalC1EdZWY1WWQZbhONM2IeDe2H7VaSo",
-  authDomain: "portfolio-4826f.firebaseapp.com",
-  databaseURL: "https://portfolio-4826f-default-rtdb.firebaseio.com/",
-  projectId: "portfolio-4826f",
-  storageBucket: "portfolio-4826f.appspot.com",
-  messagingSenderId: "735326680531",
-  appId: "1:735326680531:web:a1a821404c2539ff7d2b26",
-  measurementId: "G-RTE0VTG3CQ"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY, //here
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAINE,
+  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER,
+  appId: import.meta.env.VITE_FIREBASE_API_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

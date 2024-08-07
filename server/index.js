@@ -1,12 +1,13 @@
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
+import 'dotenv/config';
 
 const app = express();
 const port = 3000;
-const wakatimeApiKey = 'waka_4c248226-6f38-442c-a3b5-b5ff652a11cc'; // Replace with your WakaTime API key
 
 app.use(cors());
+const wakatimeApiKey =process.env.WAKATIME_API_KEY  ;
 
 app.get('/api/wakatime/stats', async (req, res) => {
   try {
