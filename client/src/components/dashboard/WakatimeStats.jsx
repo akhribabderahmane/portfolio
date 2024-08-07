@@ -18,7 +18,7 @@ const WakatimeStats = () => {
     const fetchLastweekStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/wakatime/stats"
+          "https://portfolio-wakatime-api.onrender.com/api/wakatime/stats"
         );
         dispatch(setLastWeekStats(response.data.data));
       } catch (error) {
@@ -28,7 +28,7 @@ const WakatimeStats = () => {
     const fetchallTimeStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/wakastats/alltime"
+          "https://portfolio-wakatime-api.onrender.com/api/wakastats/alltime"
         );
         dispatch(setAllTimeStats(response.data.data));
       } catch (error) {
