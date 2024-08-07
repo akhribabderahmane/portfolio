@@ -4,7 +4,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000
 const wakatimekey =process.env.WAKATIME_API_KEY; // Replace with your WakaTime API key
 
 app.use(cors());
