@@ -9,7 +9,7 @@ import {
 import { wrap } from "@motionone/utils";
 
 
-const ToolRow = ({stack,baseVelocity=4,direction='ltr'}) => {
+const ToolRow = ({stack,baseVelocity=3,direction='ltr'}) => {
   const baseX = useMotionValue(0);
   const directionFactor = useRef(direction==='ltr'?1:-1);
 

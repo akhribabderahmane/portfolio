@@ -12,22 +12,38 @@ import Navbar from "./components/Navbar";
 import { Routes, Route} from "react-router-dom";
 import useIsLaptop from "./hooks/useIsMobile";
 import Sidebar from "./components/sidebar";
-import { motion, AnimatePresence } from "framer-motion";
-import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
+import { useSelector,useDispatch } from "react-redux";
+import { setTheme } from "./features/theme/themeSlice";
 
 function App() {
   const isLaptop = useIsLaptop();
  // const selectedRoute = useSelector((state) => state.generale.selectedMenuItem);
+   const selectedMenu=useSelector(state=>state.generale.selectedMenuItem)
+   const mainScoroller=useRef(null);
+
+   useEffect(() => {
+    if (mainScoroller.current) {
+      mainScoroller.current.scrollIntoView();
+    }
+  }, [selectedMenu]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      const storedTheme = localStorage.getItem('theme') || 'light';
+      dispatch(setTheme(storedTheme));
+  }, [dispatch]);
 
   return (
     <main
       className={`  max-w-screen max-w-[90rem] mx-auto overflow-scroll scrollbar-hidden   bg-background-light-100 dark:bg-background-light-950 ${
-        isLaptop ? "flex flex-row h-screen" : ""
+        isLaptop ? "flex flex-row h-screen" : "flex flex-col h-screen"
       }`}
     >
       {!isLaptop ? <Navbar /> : <Sidebar />}
       <AnimatePresence mode="wait">
-        <div className=" flex-1 overflow-x-auto overflow-y-scroll overflow-scroll scrollbar-hidden">
+        <div  className="flex-1 overflow-x-auto overflow-y-scroll overflow-scroll scrollbar-hidden">
+          <div ref={mainScoroller}></div>
         <Routes location={location} key={location.key}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />

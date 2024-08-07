@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    selectedMenuItem:"Home",
+    selectedMenuItem:localStorage.getItem("selectedMenuItem") || "Home",
     githubData:[],
     githubStats:{
         totalContributions:0,
@@ -17,8 +17,8 @@ export const generaleSlice=createSlice({
     name:"general",
     initialState,
     reducers:{
-        setSelectedMenuItem:(state,action)=>{
-            state.selectedMenuItem=action.payload;
+        setSelectedMenuItem: (state, action) => {
+            state.selectedMenuItem = action.payload;
         },
         setGithubData:(state,action)=>{
             state.githubData=action.payload;
@@ -36,3 +36,11 @@ export const generaleSlice=createSlice({
 });
  export const {setSelectedMenuItem,setGithubData,setGithubStats,setAboutElementSelected}=generaleSlice.actions;
  export default generaleSlice.reducer;
+
+ export const localStorageMiddleware = (store) => (next) => (action) => {
+    const result = next(action);
+    if (action.type === setSelectedMenuItem.type) {
+      localStorage.setItem("selectedMenuItem", action.payload);
+    }
+    return result;
+  };

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import themeReducer from "./../features/theme/themeSlice"
-import generaleReducer from "./../features/generale/generaleSlice"
+import generaleReducer,{localStorageMiddleware} from "./../features/generale/generaleSlice"
 import wakatimeReducer from '../features/wakatime/wakatimeSlice'
 export const store = configureStore({
   reducer: {
@@ -8,4 +8,6 @@ export const store = configureStore({
     generale:generaleReducer,
     wakatime:wakatimeReducer
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(localStorageMiddleware),
 })

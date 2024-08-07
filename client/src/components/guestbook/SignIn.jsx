@@ -4,8 +4,8 @@ import { FaGithub } from "react-icons/fa";
 import { signInWithGoogle,signInWithGithub } from "../../firebase";
 const SignIn = () => {
   return (
-    <div>
-      <div className=" text-text-light dark:text-text-dark">
+    <div className=" flex flex-col items-center gap-3">
+      <div className="  text-neutral-500 text-lg">
         <p>sign In ,dont worry your data is in safe hands</p>
       </div>
       <div className=" flex flex-row gap-4">

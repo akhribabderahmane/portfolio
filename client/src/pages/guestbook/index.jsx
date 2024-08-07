@@ -12,8 +12,8 @@ const Dashboard = () => {
     >
       <div>
         <PageHeader
-          title="Dashboard"
-          description="This is my personal dashboard, displaying my recent performance"
+          title="Guestbook"
+          description="Leave whatever you like to say, suggestions, questions or anything!"
         />
       </div>
       <div>

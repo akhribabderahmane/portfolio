@@ -61,7 +61,7 @@ const Home = () => {
       </div>
 
       {/* artciles */}
-      <div className=" py-10 space-y-5">
+      {/* <div className=" py-10 space-y-5">
         <div className=" flex flex-row justify-between">
           <h2 className=" text-2xl font-medium ">Latest articles</h2>
           <button className=" flex flex-row items-center text-background-light-500 gap-2 hover:gap-4 transition-all duration-300 ">
@@ -72,7 +72,7 @@ const Home = () => {
         <div>
           <Article />
         </div>
-      </div>
+      </div> */}
 
       {/* stack */}
       <div className=" py-10 space-y-5">
