@@ -35,7 +35,7 @@ const Navbar = () => {
           />
         </div>
         <div className='flex flex-row items-center gap-2'>
-          <p className='truncate dark:text-text-dark text-text-light font-medium font-onest text-lg'>A.Abderahmane</p>
+          <p className='truncate dark:text-text-dark text-text-light font-medium font-onest text-lg'>A.Akhrib</p>
           <div>
             <img src='./icons/official.svg' className='scale-75' alt='certified' />
           </div>
