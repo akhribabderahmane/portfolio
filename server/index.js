@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 const app = express();
 const port = process.env.PORT || 3000
-const wakatimekey =process.env.WAKATIME_API_KEY; // Replace with your WakaTime API key
+const wakatimekey ="waka_c2276e99-cd1b-41b5-9d4a-c7e470efce59";
 
 app.use(cors());
 app.get('/',async (req,res)=>{
