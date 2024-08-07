@@ -6,7 +6,13 @@ import 'dotenv/config';
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: 'https:akhrib-abderahmane-api.vercel.app',
+    methods:{GET},
+    Credential:true
+  }
+));
 const wakatimeApiKey =process.env.WAKATIME_API_KEY  ;
 
 app.get('/api/wakatime/stats', async (req, res) => {
