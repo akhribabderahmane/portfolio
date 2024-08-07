@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa6";
 import Article from "../../components/article/Article";
 import Stack from "../../components/stack";
 import { BiRocket as ContactIcon } from "react-icons/bi";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { setSelectedMenuItem } from "../../features/generale/generaleSlice";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const selectedRoute = useSelector((state) => state.generale.selectedMenuItem);
@@ -18,6 +18,13 @@ const Home = () => {
       repeatDelay: 0.5, // Add a delay after each cycle
     },
   };
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const handleClick = () => {
+    scrollTo({ left: 0, top: 0, behavior: "smooth" });
+    dispatch(setSelectedMenuItem("Contact"));
+    navigate("/contact");
+  }
   return (
     <motion.div
       initial={{ y: 200, opacity: 0 }}
@@ -108,11 +115,11 @@ const Home = () => {
             can we collaborate.
           </p>
           <div>
-            <Link to="/contact">
-              <button className="  bg-blue-bright text-text-dark  text-2xl py-2 px-4 rounded-lg">
+            {/* <Link to="/contact"> */}
+              <button onClick={handleClick} className="bg-blue-bright hover:bg-blue-bright-darker-2 transition-all text-text-dark  text-2xl py-2 px-4 rounded-lg">
                 Contact me
               </button>
-            </Link>
+            {/* </Link> */}
           </div>
         </div>
       </div>
