@@ -7,11 +7,11 @@ const app = express();
 const port = 3000;
 
 app.use(cors(
-  {
-    origin: 'https:akhrib-abderahmane-api.vercel.app',
-    methods:{GET},
-    Credential:true
-  }
+  // {
+  //   origin: '*',
+  //   methods:{GET},
+  //   Credential:true
+  // }
 ));
 const wakatimeApiKey =process.env.WAKATIME_API_KEY  ;
 
