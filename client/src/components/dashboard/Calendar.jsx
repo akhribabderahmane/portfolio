@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,11 +9,12 @@ import {
 const GitHubContributionsCalendar = () => {
   const isDarkMode = useSelector((state) => state.theme.value);
   const dispatch = useDispatch();
+  //   const [data, setData] = useState([]);
   const data = useSelector((state) => state.generale.githubData);
-  
+
   useEffect(() => {
     const fetchContributions = async () => {
-      const token =import.meta.env.VITE_GITHUB_API_KEY;;
+      const token =import.meta.env.VITE_GITHUB_API_KEY;
       const query = `{
         user(login: "akhribabderahmane") {
           contributionsCollection {
@@ -40,6 +41,7 @@ const GitHubContributionsCalendar = () => {
       });
     
       const result = await response.json();
+      console.log(result)
       const contributions = result.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
         (week) =>
           week.contributionDays.map((day) => ({
