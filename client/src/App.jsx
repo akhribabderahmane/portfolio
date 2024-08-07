@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
 import About from "./pages/about";
 import Home from "./pages/home";
 import Blog from "./pages/blog";
@@ -21,11 +21,12 @@ function App() {
  // const selectedRoute = useSelector((state) => state.generale.selectedMenuItem);
    const selectedMenu=useSelector(state=>state.generale.selectedMenuItem)
    const mainScoroller=useRef(null);
-
+    const [isMenuOpen, setisMenuOpen] = useState(false);
    useEffect(() => {
     if (mainScoroller.current) {
       mainScoroller.current.scrollIntoView();
     }
+    setisMenuOpen(false)
   }, [selectedMenu]);
   const dispatch = useDispatch();
 
@@ -40,9 +41,9 @@ function App() {
         isLaptop ? "flex flex-row h-screen" : "flex flex-col h-screen"
       }`}
     >
-      {!isLaptop ? <Navbar /> : <Sidebar />}
+      {!isLaptop ? <Navbar isMenuOpen={isMenuOpen} setisMenuOpen={setisMenuOpen} /> : <Sidebar />}
       <AnimatePresence mode="wait">
-        <div  className="flex-1 overflow-x-auto overflow-y-scroll overflow-scroll scrollbar-hidden">
+        <div  className={`flex-1 overflow-x-auto overflow-y-scroll overflow-scroll scrollbar-hidden ${(isMenuOpen && !isLaptop) ?"hidden":""}`} >
           <div ref={mainScoroller}></div>
         <Routes location={location} key={location.key}>
             <Route index element={<Home />} />

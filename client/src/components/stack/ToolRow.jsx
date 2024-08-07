@@ -18,7 +18,7 @@ const ToolRow = ({stack,baseVelocity=3,direction='ltr'}) => {
     baseX.set(baseX.get() + moveBy);
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -600, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -300, v)}%`);
 
 
 
@@ -31,28 +31,10 @@ const ToolRow = ({stack,baseVelocity=3,direction='ltr'}) => {
         {stack.map((tool, index) => (
           <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
         ))}
-         {stack.map((tool, index) => (
-          <Tool key={index} name={tool.name} icon={tool.icon} />
-        ))}
-        {stack.map((tool, index) => (
+          {stack.map((tool, index) => (
           <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
         ))}
-         {stack.map((tool, index) => (
-          <Tool key={index} name={tool.name} icon={tool.icon} />
-        ))}
-        {stack.map((tool, index) => (
-          <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
-        ))}
-         {stack.map((tool, index) => (
-          <Tool key={index} name={tool.name} icon={tool.icon} />
-        ))}
-        {stack.map((tool, index) => (
-          <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
-        ))}
-         {stack.map((tool, index) => (
-          <Tool key={index} name={tool.name} icon={tool.icon} />
-        ))}
-        {stack.map((tool, index) => (
+          {stack.map((tool, index) => (
           <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
         ))}
       </motion.div>

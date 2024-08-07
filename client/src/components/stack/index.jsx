@@ -1,7 +1,6 @@
 import React from "react";
 import ToolRow from "./ToolRow";
 import { stack, stack1, stack2 } from "../../constant/Stack";
-import {useSelector} from "react-redux"
 const Stack = () => {
   const stacks = [stack, stack1, stack2];
   return (

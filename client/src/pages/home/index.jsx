@@ -32,12 +32,12 @@ const Home = () => {
       exit={{ y: -200, opacity: 0 }}
       transition={{ duration: 0.59 }}
       key={selectedRoute}
-      className=" text-text-light dark:text-text-dark font-onest px-8 divide-y-[1px] divide-background-light-400 dark:divide-background-light-800 "
+      className=" text-text-light dark:text-text-dark font-onest px-5 sm:px-8 divide-y-[1px] divide-background-light-400 dark:divide-background-light-800 "
     >
-      <div className=" space-y-9 py-10 pt-14">
+      <div className=" space-y-5 sm:space-y-9 py-6 sm:py-10 pt-7 sm:pt-14">
         <div className="name-location space-y-5">
           <div>
-            <h2 className=" text-3xl md:text-4xl font-medium">
+            <h2 className=" text-xl md:text-3xl font-medium">
               Hi I'm Abderahmane Akhrib{" "}
               <motion.span
                 animate={waveAnimation}
@@ -48,7 +48,7 @@ const Home = () => {
             </h2>
           </div>
           <div>
-            <ul className=" flex flex-col md:flex-row md:gap-8 gap-4 text-xl list-inside ml-6 dark:text-background-light-400">
+            <ul className=" flex flex-col md:flex-row md:gap-8 gap-2 text-lg list-inside ml-5 dark:text-background-light-400">
               <li className=" list-disc capitalize">
                 based in Algeria,Algiers 🇩🇿
               </li>
@@ -56,7 +56,7 @@ const Home = () => {
             </ul>
           </div>
         </div>
-        <div className="description dark:text-background-light-100 text-xl tracking-wide leading-8">
+        <div className="description dark:text-background-light-100 text-lg sm:text-xl tracking-wide leading-8">
           <p>
             I am a third-year computer science student at ESI ex-INI Algiers,
             passionate about web development and AI. With a focus on creating
@@ -82,9 +82,9 @@ const Home = () => {
       </div> */}
 
       {/* stack */}
-      <div className=" py-10 space-y-5">
+      <div className=" py-6 sm:py-10 space-y-5">
         <div className="">
-          <h2 className=" text-2xl font-medium capitalize ">
+          <h2 className=" text-lg sm:text-2xl font-medium capitalize ">
             Tools that I have used
           </h2>
         </div>
@@ -96,27 +96,27 @@ const Home = () => {
       {/* what i have been working on */}
       <div className=" py-10 space-y-4">
         <div className=" space-y-4">
-          <h2 className=" text-2xl font-medium capitalize ">
+          <h2 className=" text-xl sm:text-2xl font-medium capitalize ">
             What i have been workong on
           </h2>
-          <p className=" text-xl leading-10">
+          <p className=" text-xl sm:text-2xl leading-7">
             Experienced in delivering diverse web solutions and collaborating
             with scientific clubs. Let's enhance your business with top-tier
             expertise and digital solutions
           </p>
         </div>
-        <div className=" w-full px-6 py-10 flex flex-col gap-5 justify-center border-neutral-300 dark:border-neutral-700 border-2 rounded-lg">
-          <div className=" text-4xl flex flex-row gap-4">
+        <div className=" w-full px-3 sm:px-6 py-10 flex flex-col gap-5 justify-center border-neutral-300 dark:border-neutral-700 border-2 rounded-lg">
+          <div className=" text-xl sm:text-4xl flex flex-row gap-4">
             <ContactIcon />
             <p>Lets work together!</p>
           </div>
-          <p className=" text-xl ">
+          <p className=" text-base sm:text-xl ">
             I'm open for freelance projects, feel free to email me to see how
             can we collaborate.
           </p>
           <div>
             {/* <Link to="/contact"> */}
-              <button onClick={handleClick} className="bg-blue-bright hover:bg-blue-bright-darker-2 transition-all text-text-dark  text-2xl py-2 px-4 rounded-lg">
+              <button onClick={handleClick} className="bg-blue-bright hover:bg-blue-bright-darker-2 transition-all text-text-dark text-lg sm:text-2xl py-2 px-4 rounded-lg">
                 Contact me
               </button>
             {/* </Link> */}

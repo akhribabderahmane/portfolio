@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 import Menu from './Menu/Menu'
 
 
-const Navbar = () => {
+const Navbar = ({isMenuOpen,setisMenuOpen}) => {
   // this state is for menu 
   const [isOpen, setOpen] = useState(false);
   const isDarkMode=useSelector(state=>state.theme.value);
@@ -17,17 +17,17 @@ const Navbar = () => {
     duration:2
   };
   return (
-    <div className='navbar py-4 pt-6 px-4 flex flex-col border-b-background-light-400 dark:border-b-background-light-800 border-b-[1px]'>
-    <div className={`flex flex-row justify-between items-center px-4 pr-2`}>
+    <div className='navbar py-4 pt-6 px-2 flex flex-col border-b-background-light-400 dark:border-b-background-light-800 border-b-[1px]'>
+    <div className={`flex flex-row justify-between items-center px-2 pr-2`}>
       <motion.div
         layout
         transition={spring}
-        className={`image-name flex ${isOpen ? 'flex-col justify-start items-start gap-8' : 'flex-row items-center gap-2'}`}
+        className={`image-name flex ${isMenuOpen ? 'flex-col justify-start items-start gap-8' : 'flex-row items-center gap-2'}`}
       >
         <div>
           <motion.img
             initial={{ scale: 1 }}
-            animate={{ scale: isOpen ? 1.5 : 1 }}
+            animate={{ scale: isMenuOpen ? 1.5 : 1 }}
             transition={{ duration: 1.5 }}
             className='rounded-full w-12 h-12 object-cover shadow-sm shadow-[#f5f5f5]'
             src='./images/profile-pic.jpg'
@@ -44,19 +44,19 @@ const Navbar = () => {
       <motion.div
         layout
         transition={spring}
-        className={`switch-menuBtn flex gap-2 ${isOpen ? 'flex-col-reverse items-end gap-8' : 'flex-row items-center'}`}
+        className={`switch-menuBtn flex gap-2 ${isMenuOpen ? 'flex-col-reverse items-end gap-8' : 'flex-row items-center'}`}
       >
         <div>
           <SwitchButton />
         </div>
         <div>
-          <Hamburger toggled={isOpen} toggle={setOpen} color={isDarkMode ? '#f9fafb' : '#1f2937'} />
+          <Hamburger toggled={isMenuOpen} toggle={setisMenuOpen} color={isDarkMode ? '#f9fafb' : '#1f2937'} />
         </div>
       </motion.div>
     </div>
-    {isOpen && (
+    {isMenuOpen && (
       <motion.div layout transition={spring} className='w-full mt-4'>
-        <Menu isOpen={isOpen} />
+        <Menu isOpen={isMenuOpen} />
       </motion.div>
     )}
   </div>
