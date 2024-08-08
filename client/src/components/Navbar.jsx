@@ -29,8 +29,8 @@ const Navbar = ({isMenuOpen,setisMenuOpen}) => {
             initial={{ scale: 1 }}
             animate={{ scale: isMenuOpen ? 1.5 : 1 }}
             transition={{ duration: 1.5 }}
-            className='rounded-full w-12 h-12 object-cover shadow-sm shadow-[#f5f5f5]'
-            src='./images/profile-pic.jpg'
+            className='rounded-full  w-12 h-12 object-cover shadow-sm shadow-[#f5f5f5]'
+            src='./images/portfolio-pic-2.png'
             alt='abderahmane akhrib pic'
           />
         </div>

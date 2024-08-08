@@ -16,8 +16,8 @@ const Sidebar = () => {
     <div className="min-w-[300px] py-6 px-4 max-h-screen ">
       <div className=" space-y-2">
         <img
-          src="./images/profile-pic.jpg"
-          className=" object-cover w-24 aspect-square rounded-full "
+          src="./images/portfolio-pic-2.png"
+          className=" object-cover w-24 aspect-square rounded-full  shadow-2xl "
           alt=""
         />
         <div>
