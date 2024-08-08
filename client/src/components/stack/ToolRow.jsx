@@ -1,4 +1,3 @@
-import React,{useRef} from 'react'
 import Tool from './Tool'
 import {
   motion,
@@ -7,14 +6,26 @@ import {
   useAnimationFrame
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
+import { useState, useEffect,useRef } from "react";
+import { useWindowSize } from "@uidotdev/usehooks";
 
+const useIsMobile = () => {
+  const { width } = useWindowSize();
+
+  const [isMobile, setIsMobile] = useState(width <640);
+
+  useEffect(() => {
+    setIsMobile(width<640);
+  }, [width]);
+  return isMobile;
+};
 
 const ToolRow = ({stack,baseVelocity=3,direction='ltr'}) => {
   const baseX = useMotionValue(0);
   const directionFactor = useRef(direction==='ltr'?1:-1);
-
+  const isMobile=useIsMobile();
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta /1000);
+    let moveBy = directionFactor.current * (isMobile ? 8 : baseVelocity) * (delta /1000);
     baseX.set(baseX.get() + moveBy);
   });
 
@@ -29,6 +40,12 @@ const ToolRow = ({stack,baseVelocity=3,direction='ltr'}) => {
           <Tool key={index} name={tool.name} icon={tool.icon} />
         ))}
         {stack.map((tool, index) => (
+          <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
+        ))}
+          {stack.map((tool, index) => (
+          <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
+        ))}
+          {stack.map((tool, index) => (
           <Tool key={index + stack.length} name={tool.name} icon={tool.icon} />
         ))}
           {stack.map((tool, index) => (

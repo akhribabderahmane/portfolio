@@ -11,7 +11,7 @@ const Contact = () => {
     animate={{ y: 0, opacity: 1 }}
     exit={{ y: -200, opacity: 0 }}
     transition={{ duration: 0.59 }}
-    className=' text-text-light dark:text-text-dark py-10 pt-14 flex flex-col px-8'>
+    className=' text-text-light dark:text-text-dark py-6 sm:py-10 pt-7 sm:pt-14 flex flex-col px-5 sm:px-8'>
         <div>
            <PageHeader title="Contact" description="Feel free to get in touch and let's have a discussion about how we can work together." />
         </div>

@@ -56,7 +56,7 @@ const Guestbook = () => {
   };
   return (
     <div className=" my-5 ">
-      <div className=" space-y-6 h-[22rem] overflow-y-scroll px-2" style={{overflowY: 'scroll' }}>
+      <div className=" space-y-6  h-[26rem] sm:h-[22rem] overflow-y-scroll overflow-x-clip px-2" style={{overflowY: 'scroll' }}>
         {messages.map((msg) => (
           <Message key={msg.id} msg={msg} />
         ))}
