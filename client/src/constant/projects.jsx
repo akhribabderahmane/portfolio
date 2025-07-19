@@ -17,106 +17,164 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVite,
-  SiMongodb
+  SiMongodb,
 } from "react-icons/si";
-const iconSize=30;
-const projects=[
-    {
-        name:"Personal portfolio",
-        desc:"Built with React to showcase skills and projects in a dynamic, personalized format.",
-        image:"./images/projects/portfolio-pic.png",
-        stack:[
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-            <SiNestjs size={iconSize}  className="text-red-600" /> 
-        ],
-        sourceCode:"/",
-        demo:"/",
-        private:false
-    },
-    {
-        name:"weather app",
-        desc:"Built with React, this app provides real-time weather updates and accurate forecasts.",
-        image:"./images/projects/weather-app-pic.png",
-        stack:[
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-            <SiCss3 size={iconSize}  className="text-blue-600" />
-        ],
-        sourceCode:"https://github.com/akhribabderahmane/weather-app",
-        demo:"https://akhribabderahmane.github.io/weather-app/",
-        private:false
-    },
-    {
-        name:"Country API",
-        desc:"A React application to search and display detailed information about any country.",
-        image:"./images/projects/country-api-pic.png",
-        stack:[
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-            <SiCss3 size={iconSize}  className="text-blue-600" />
-        ],
-        sourceCode:"https://github.com/akhribabderahmane/country-api",
-        demo:"https://akhribabderahmane.github.io/country-api/",
-        private:false
-    },
-    {
-        name:"Admin dashboard",
-        desc:"Built with React, Material UI, and Nova for efficient admin task management",
-        image:"./images/projects/admin-dashboard-pic.png",
-        stack:[
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-            <SiMui size={iconSize}  className="text-blue-500" />
-        ],
-        sourceCode:"https://github.com/akhribabderahmane/admin-dashboard",
-        demo:"https://akhribabderahmane.github.io/admin-dashboard/",
-        private:false
-    },
-    {
-        name:"Esi cup fantazy",
-        desc:"React, Framer Motion, and Django-based app for managing fantasy football teams.",
-        image:"./images/projects/fantazy-pic.png",
-        stack:[
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-        ],
-        sourceCode:"https://github.com/Sport-and-Entertainment-Club/esi-cup-fantasy",
-        demo:"https://ecf.sec-esi.club/overview/news",
-        private:true
-    },
-    {
-        name:"ArchiMind",
-        desc:"A C# desktop app for easy and engaging computer architecture learning.",
-        image:"./images/projects/ArchiMind-pic.png",
-        stack:[
-            <SiCsharp size={iconSize}  className="text-purple-600" />
-        ],
-        sourceCode:"https://github.com/aminetech26/SimulationMachinePedagogique",
-        demo:"https://archimind.netlify.app/",
-        private:false
-    },
-    {
-        name:"Open source website",
-        desc:"A registration platform for an event, powered by React and React Hook Forms for seamless user interaction.",
-        image:"./images/projects/openSource-pic.png",
-        stack:[
-            <SiNextdotjs size={iconSize}  className="text-black" /> ,
-            <SiReact size={iconSize} className="text-blue-500" />,
-            <SiJavascript size={iconSize}  className="text-yellow-500" /> ,
-            <SiTailwindcss size={iconSize}  className="text-teal-500" />,
-        ],
-        sourceCode:"https://github.com/ScientificClubofESI/open-source-event-website",
-        demo:"https://open-source-day-2023.cse.club/",
-        private:true
-    },
-    
-]
-
+const iconSize = 30;
+const projects = [
+  {
+    name: "Esi cup Fantasy 2k25",
+    desc: "Built with React to showcase skills and projects in a dynamic, personalized format.",
+    image: "./images/projects/fantasy-2k25.png",
+    stack: [
+      <SiNextdotjs size={iconSize} className="text-black" />,
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiExpress size={iconSize} className="text-gray-600" />,
+      <SiNodedotjs size={iconSize} className="text-green-600" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiTypescript size={iconSize} className="text-blue-400" />,
+      <SiPrisma size={iconSize} className="text-purple-600" />,
+    ],
+    sourceCode: "/",
+    demo: "https://fantasy.sec-esi.com/overview/news",
+    private: true,
+  },
+  {
+    name: "Khutwa VR",
+    desc: "Developed a VR platform for Al Umrah tourism agencies allowing management and immersive 360° visualization of holy sites. Built a complete content management system with admin dashboard and responsive client interface.",
+    image: "./images/projects/khutwa-vr.png", // You'll need to add this image
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiTypescript size={iconSize} className="text-blue-400" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiNodedotjs size={iconSize} className="text-green-600" />,
+    ],
+    sourceCode: "/",
+    demo: "/",
+    private: true,
+  },
+  {
+    name: "Personal portfolio",
+    desc: "Built with React to showcase skills and projects in a dynamic, personalized format.",
+    image: "./images/projects/portfolio-pic.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiNestjs size={iconSize} className="text-red-600" />,
+    ],
+    sourceCode: "/",
+    demo: "/",
+    private: false,
+  },
+  {
+    name: "AIS - All Intelligent Solutions",
+    desc: "Designed and developed a modern, animated landing page for AIS (All Intelligent Solutions) using Next.js and Framer Motion. Created smooth scrolling experiences, interactive UI components, and responsive design to showcase the company's services and solutions.",
+    image: "./images/projects/ais-website.png",
+    stack: [
+      <SiNextdotjs size={iconSize} className="text-black" />,
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />, // Assuming you used Tailwind, adjust if needed
+    ],
+    sourceCode: "/",
+    demo: "https://www.all-intelligence-solutions.com/",
+    private: true,
+  },
+  {
+    name: "weather app",
+    desc: "Built with React, this app provides real-time weather updates and accurate forecasts.",
+    image: "./images/projects/weather-app-pic.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiCss3 size={iconSize} className="text-blue-600" />,
+    ],
+    sourceCode: "https://github.com/akhribabderahmane/weather-app",
+    demo: "https://akhribabderahmane.github.io/weather-app/",
+    private: false,
+  },
+  {
+    name: "ESI Cup Fantasy Admin Panel",
+    desc: "Developed a comprehensive admin dashboard for managing the ESI Cup Fantasy football platform. Built with React, TypeScript, and Prisma, allowing tournament organizers to manage players, teams, matches, and user data with real-time updates and statistics tracking.",
+    image: "./images/projects/fantasy-admin.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiTypescript size={iconSize} className="text-blue-400" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiPrisma size={iconSize} className="text-purple-600" />,
+      <SiNodedotjs size={iconSize} className="text-green-600" />,
+    ],
+    sourceCode: "/", 
+    demo: "/",
+    private: true,
+  },
+  {
+    name: "Country API",
+    desc: "A React application to search and display detailed information about any country.",
+    image: "./images/projects/country-api-pic.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiCss3 size={iconSize} className="text-blue-600" />,
+    ],
+    sourceCode: "https://github.com/akhribabderahmane/country-api",
+    demo: "https://akhribabderahmane.github.io/country-api/",
+    private: false,
+  },
+  {
+    name: "Admin dashboard",
+    desc: "Built with React, Material UI, and Nova for efficient admin task management",
+    image: "./images/projects/admin-dashboard-pic.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+      <SiMui size={iconSize} className="text-blue-500" />,
+    ],
+    sourceCode: "https://github.com/akhribabderahmane/admin-dashboard",
+    demo: "https://akhribabderahmane.github.io/admin-dashboard/",
+    private: false,
+  },
+  {
+    name: "Esi cup fantazy",
+    desc: "React, Framer Motion, and Django-based app for managing fantasy football teams.",
+    image: "./images/projects/fantazy-pic.png",
+    stack: [
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+    ],
+    sourceCode:
+      "https://github.com/Sport-and-Entertainment-Club/esi-cup-fantasy",
+    demo: "https://ecf.sec-esi.club/overview/news",
+    private: true,
+  },
+  {
+    name: "ArchiMind",
+    desc: "A C# desktop app for easy and engaging computer architecture learning.",
+    image: "./images/projects/ArchiMind-pic.png",
+    stack: [<SiCsharp size={iconSize} className="text-purple-600" />],
+    sourceCode: "https://github.com/aminetech26/SimulationMachinePedagogique",
+    demo: "https://archimind.netlify.app/",
+    private: false,
+  },
+  {
+    name: "Open source website",
+    desc: "A registration platform for an event, powered by React and React Hook Forms for seamless user interaction.",
+    image: "./images/projects/openSource-pic.png",
+    stack: [
+      <SiNextdotjs size={iconSize} className="text-black" />,
+      <SiReact size={iconSize} className="text-blue-500" />,
+      <SiJavascript size={iconSize} className="text-yellow-500" />,
+      <SiTailwindcss size={iconSize} className="text-teal-500" />,
+    ],
+    sourceCode:
+      "https://github.com/ScientificClubofESI/open-source-event-website",
+    demo: "https://open-source-day-2023.cse.club/",
+    private: true,
+  },
+];
 
 export default projects;
