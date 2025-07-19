@@ -4,9 +4,10 @@ import PageHeader from "../../components/PageHeader";
 import { FaPlay } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 
+// Import PrismJS main library first
+import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
-import Prism from 'prismjs';
 
 const Learn = () => {
   const [code, setCode] = useState('// Write your JavaScript code here\nconsole.log("Hello, world!");\n\n// Try creating variables\nconst greeting = "Welcome to my interactive code playground!";\nconsole.log(greeting);\n\n// Or math operations\nconsole.log(5 + 10);\n\n// You can even define functions\nfunction multiply(a, b) {\n  return a * b;\n}\n\nconsole.log("5 × 3 =", multiply(5, 3));');
@@ -16,9 +17,13 @@ const Learn = () => {
   const [highlightedCode, setHighlightedCode] = useState("");
 
   useEffect(() => {
-    // Highlight the code whenever it changes
-    const highlighted = Prism.highlight(code, Prism.languages.javascript, 'javascript');
-    setHighlightedCode(highlighted);
+    // Ensure Prism is defined before using
+    if (typeof Prism !== "undefined" && Prism.highlight) {
+      const highlighted = Prism.highlight(code, Prism.languages.javascript, 'javascript');
+      setHighlightedCode(highlighted);
+    } else {
+      setHighlightedCode(code); // fallback: no highlight
+    }
   }, [code]);
 
   const runCode = () => {
