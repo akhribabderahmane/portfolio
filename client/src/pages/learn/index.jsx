@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader";
 import { FaPlay } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
-import Prism from 'prismjs';
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
 
